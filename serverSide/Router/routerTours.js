@@ -1,0 +1,15 @@
+const express= require('express')
+const mongoose = require('mongoose')
+const { creatTour ,tourCount,getFeatueredTour,getTourSearch,updateTour,deleteTour,getTour,getTours } = require('../Controller/tourController')
+const router = express.Router()
+const {verifyAdmin} = require('../Utili/verifiyToken')
+
+router.post('/',verifyAdmin, creatTour)
+router.put('/:id', verifyAdmin,updateTour)
+router.delete('/:id',verifyAdmin, deleteTour)
+router.get('/:id', getTour)
+router.get('/', getTours)
+router.get('/search/count', tourCount)
+router.get('/search/getTourSearch', getTourSearch)
+router.get('/search/getFeatueredTour',getFeatueredTour )
+module.exports = router
