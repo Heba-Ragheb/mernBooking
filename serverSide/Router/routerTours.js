@@ -11,5 +11,5 @@ router.get('/:id', getTour)
 router.get('/', getTours)
 router.get('/search/count', tourCount)
 router.get('/search/getTourSearch', getTourSearch)
-router.get('/search/getFeatueredTour',getFeatueredTour )
+router.get('/search/getFeatueredTour',getFeatueredTour)
 module.exports = router

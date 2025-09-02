@@ -6,7 +6,9 @@ import tourData from "../assets/data/tours"
 import FeaturesToures from '../component/FeaturedTours/FeaturesToures'
 import TourCard from '../Service/TourCard'
 import useFetch from '../Hocks/useFetch';
-import { BASE_URL } from '../Service/Config';
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+console.log('BASE_URL:', process.env.REACT_APP_BASE_URL);
 const Tours = () => {
 
     const [pagecount, setPageCount] = useState(0)
@@ -46,7 +48,7 @@ setPageCount(pages);
                  <Col lg="12">
 <div className="pagination d-flex align-items-center
 justify-content-center mt-4 gap-3">
-{[... Array(pagecount).keys()].map(number=>(
+{[...Array(pagecount).keys()].map(number=>(
 <span key={number} onClick={()=> setPage(number)}>
 {number + 1}
 </span>

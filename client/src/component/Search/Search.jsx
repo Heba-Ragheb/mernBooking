@@ -6,9 +6,10 @@ import { IoPeople } from "react-icons/io5";
 import { FaSearchLocation } from "react-icons/fa";
 import { Button } from 'reactstrap';
 import useFetch from '../../Hocks/useFetch';
-import { BASE_URL } from '../../Service/Config';
+//import { BASE_URL } from '../../Service/Config';
 import { Navigate, useNavigate } from 'react-router-dom';
 import './Search.css'
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Search = () => {
 
     const locationRef = useRef('')

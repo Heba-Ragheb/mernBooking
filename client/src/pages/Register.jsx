@@ -2,8 +2,9 @@ import React, { useState ,useContext} from 'react'
 import { Form } from 'react-bootstrap'
 import './page.css'
 import { AuthContext } from '../context/AuthContext'
-import { BASE_URL } from '../Service/Config'
+
 import { useNavigate } from 'react-router-dom'
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Register = () => {
   const navigate = useNavigate()
   const [username, setUsername] = useState('');

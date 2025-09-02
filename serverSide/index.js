@@ -11,7 +11,8 @@ const tourRouter = require('./Router/routerTours')
 const userRouter = require('./Router/userRouter')
 const reviewRouter = require('./Router/reviewRouter')
 const bookingRouter = require('./Router/bookingRouter')
-const port = process.env.PORT || 8000
+const port = process.env.PORT 
+
 //const uri =  "mongodb+srv://${process.env.USER_NAME}:${process.env.PASSWORD}@cluster0.gfuf4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 const uri =  `mongodb+srv://${process.env.USER_NAME}:${process.env.PASSWORD}@cluster0.gfuf4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
  
