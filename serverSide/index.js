@@ -17,7 +17,7 @@ const port = process.env.PORT
 const uri =  `mongodb+srv://${process.env.USER_NAME}:${process.env.PASSWORD}@cluster0.gfuf4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
  
 const corsOptions = {
-  origin: 'http://localhost:3000', // Frontend origin
+  origin: `${process.env.FRONT_BASE_URL}`, // Frontend origin
   methods: 'GET,POST,PUT,DELETE,OPTIONS',
   allowedHeaders: 'Content-Type,Authorization',
   credentials: true, // Allow credentials (cookies, etc.)
