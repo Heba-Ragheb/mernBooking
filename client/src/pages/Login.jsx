@@ -24,7 +24,7 @@ const Login = () => {
     dispatch({type:'LOGIN_START'})
  
    try {
-    const res = await fetch(`${BASE_URL}/user/login`,{
+    const res = await fetch(`${BASE_URL}/auth/login`,{
       method:"POST",
       headers:{
         "content-type":"application/json"
