@@ -59,6 +59,16 @@ app.use("/auth", authRouter); // changed to /auth (clearer)
 app.use("/reviews", reviewRouter);
 app.use("/booking", bookingRouter);
 
+const path = require("path");
+
+// Serve React build folder
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+// Catch-all route for React Router
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+});
+
 // Start server
 app.listen(port, () => {
   console.log(`🚀 Server running on port ${port}`);
