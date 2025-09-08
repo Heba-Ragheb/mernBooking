@@ -27,21 +27,35 @@ const uri = `mongodb+srv://${process.env.USER_NAME}:${process.env.PASSWORD}@clus
 ];*/
 const allowedOrigins = [
   "http://localhost:3000",
-  /\.vercel\.app$/  // allow any vercel.app subdomain
+  /\.vercel\.app$/  // regex to match any vercel.app subdomain
 ];
 
 const corsOptions = {
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (!origin) {
+      // Allow non-browser requests like Postman or server-to-server
+      return callback(null, true);
+    }
+
+    // Check if origin matches any allowed origin string or regex
+    const allowed = allowedOrigins.some((allowedOrigin) => {
+      if (typeof allowedOrigin === "string") {
+        return allowedOrigin === origin;
+      } else if (allowedOrigin instanceof RegExp) {
+        return allowedOrigin.test(origin);
+      }
+      return false;
+    });
+
+    if (allowed) {
       callback(null, true);
     } else {
       console.log("❌ Blocked by CORS:", origin);
       callback(new Error("Not allowed by CORS"));
     }
   },
-  credentials: true, // allow cookies/JWT
+  credentials: true,
 };
-
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
