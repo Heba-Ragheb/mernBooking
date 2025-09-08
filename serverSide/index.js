@@ -20,10 +20,14 @@ const port = process.env.PORT || 5000;
 const uri = `mongodb+srv://${process.env.USER_NAME}:${process.env.PASSWORD}@cluster0.gfuf4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
 // ✅ Allowed origins
-const allowedOrigins = [
+/**const allowedOrigins = [
   process.env.FRONT_BASE_URL, // from Railway
   "http://localhost:3000",
   "https://mern-booking-6gbi.vercel.app" // Vercel domain
+];*/
+const allowedOrigins = [
+  "http://localhost:3000",
+  /\.vercel\.app$/  // allow any vercel.app subdomain
 ];
 
 const corsOptions = {
