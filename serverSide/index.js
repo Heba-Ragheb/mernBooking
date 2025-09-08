@@ -21,6 +21,8 @@ const uri = `mongodb+srv://${process.env.USER_NAME}:${process.env.PASSWORD}@clus
 const allowedOrigins = [
   process.env.FRONT_BASE_URL,
   "http://localhost:3000",
+   "https://mern-booking-6gbi.vercel.app",
+
 ];
 
 const corsOptions = {
@@ -58,16 +60,6 @@ app.use("/users", userRouter);
 app.use("/auth", authRouter); // changed to /auth (clearer)
 app.use("/reviews", reviewRouter);
 app.use("/booking", bookingRouter);
-
-const path = require("path");
-
-// Serve React build folder
-app.use(express.static(path.join(__dirname, "../client/build")));
-
-// Catch-all route for React Router
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-});
 
 // Start server
 app.listen(port, () => {
